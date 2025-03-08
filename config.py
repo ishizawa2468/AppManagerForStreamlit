@@ -1,12 +1,16 @@
 """
 設定情報の記載
 """
+import platform
+
+# OSの取得
+OS = platform.system()
 
 # 起動できるアプリ情報
 """
 NOTE: jsonの構造 = {
   "アプリ名": {
-      "path": "そのアプリのhome.pyまでのpath",
+      "path": "そのアプリの最初のページファイルまでのpath",
       "dir": "そのアプリでrootとなるフォルダで、そのアプリでのimportの起点"
   },
   "アプリ名2": { ... },
@@ -14,10 +18,10 @@ NOTE: jsonの構造 = {
 }
 """
 APPS = {
-    "AppManager": {
-        "path": "main.py",
-        "dir": "."
-    },
+    # "AppManager": {
+    #     "path": "main.py",
+    #     "dir": "."
+    # },
     "PlanckThermoEmulator": {
         "path": "../PlanckThermoEmulator/home.py",
         "dir": "../PlanckThermoEmulator"

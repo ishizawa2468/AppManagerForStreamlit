@@ -1,20 +1,19 @@
 """
-起動・取得・終了
+アプリやポートの状態を処理するメソッド
 """
 
 import subprocess
 import pandas as pd
-from config import APPS, BASE_PORT, PORT_RANGE
-from os_utils import get_os, run_command
+from config import OS, APPS, BASE_PORT, ALL_PORT_RANGE
+from os_utils import run_command
 
 def get_running_apps():
     """現在稼働中のポートのプロセス情報を取得し、DataFrame で整理"""
     data = []
-    os_type = get_os()
 
-    for port in PORT_RANGE:
+    for port in ALL_PORT_RANGE:
         try:
-            if os_type == "Darwin" or os_type == "Linux":  # macOS / Linux
+            if OS == "Darwin" or OS == "Linux":  # macOS / Linux
                 search_command = f"lsof -i :{port}"
                 result = run_command(search_command)
 
@@ -60,7 +59,7 @@ def get_running_apps():
                                 "NAME": cols[idx_map["NAME"]],
                             })
 
-            elif os_type == "Windows":  # Windows
+            elif OS == "Windows":  # Windows
                 # `netstat` でポートのプロセス情報を取得
                 search_command = f'netstat -ano | findstr :{port}'
                 result = run_command(search_command)
@@ -128,15 +127,14 @@ def start_app(app_name, port):
 
 def stop_app(port):
     """指定ポートのアプリを停止"""
-    os_type = get_os()
     try:
-        if os_type == "Darwin" or os_type == "Linux":  # macOS / Linux
+        if OS == "Darwin" or OS == "Linux":  # macOS / Linux
             result = run_command(f"lsof -t -i :{port}")
             if result:
                 for pid in result.split("\n"):
                     run_command(f"kill -9 {pid}")
                 return f"ポート {port} のアプリを停止しました。"
-        elif os_type == "Windows":
+        elif OS == "Windows":
             result = run_command(f"netstat -ano | findstr :{port}")
             if result:
                 pid = result.strip().split()[-1]
