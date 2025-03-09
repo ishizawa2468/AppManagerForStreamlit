@@ -18,10 +18,10 @@ NOTE: jsonの構造 = {
 }
 """
 APPS = {
-    # "AppManager": {
-    #     "path": "main.py",
-    #     "dir": "."
-    # },
+    "AppManager": {
+        "path": "main.py",
+        "dir": "."
+    },
     "PlanckThermoEmulator": {
         "path": "../PlanckThermoEmulator/home.py",
         "dir": "../PlanckThermoEmulator"

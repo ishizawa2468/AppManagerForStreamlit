@@ -3,127 +3,78 @@
 """
 
 import subprocess
+import time
 import pandas as pd
 from config import OS, APPS, BASE_PORT, ALL_PORT_RANGE
-from os_utils import run_command
+from os_utils import run_command, get_port_search_command
+from process_utils import shape_to_dataframe, summarize_unique_values, add_extracted_app_name
 
-def get_running_apps():
+
+def search_ports():
     """現在稼働中のポートのプロセス情報を取得し、DataFrame で整理"""
-    data = []
+    ports_data = []
 
     for port in ALL_PORT_RANGE:
         try:
-            if OS == "Darwin" or OS == "Linux":  # macOS / Linux
-                search_command = f"lsof -i :{port}"
-                result = run_command(search_command)
-
-                if result:
-                    lines = result.split("\n")
-                    header = lines[0].split()
-                    idx_map = {key: i for i, key in enumerate(header)}
-
-                    required_cols = ["COMMAND", "PID", "TYPE", "NODE", "NAME"]
-                    if not all(col in idx_map for col in required_cols):
-                        continue
-
-                    for line in lines[1:]:
-                        cols = line.split()
-                        if len(cols) > max(idx_map.values()):
-                            pid = cols[idx_map["PID"]]
-                            command = cols[idx_map["COMMAND"]]
-                            app_name = "other"
-
-                            # `ps` でプロセスの詳細コマンドを取得
-                            cmdline = run_command(f"ps -p {pid} -o command=").strip()
-
-                            # App Managerの識別
-                            if port == BASE_PORT:
-                                app_name = "App Manager"
-                            elif "streamlit run" in cmdline:
-                                for app, info in APPS.items():
-                                    if info["path"] in cmdline:
-                                        app_name = app
-                                        break
-                            elif "Google Chrome" in cmdline:
-                                app_name = "Google Chrome"
-                            elif "Safari" in cmdline:
-                                app_name = "Safari"
-
-                            data.append({
-                                "Port": port,
-                                "APP_NAME": app_name,
-                                "COMMAND": command,
-                                "PID": pid,
-                                "TYPE": cols[idx_map["TYPE"]],
-                                "NODE": cols[idx_map["NODE"]],
-                                "NAME": cols[idx_map["NAME"]],
-                            })
-
-            elif OS == "Windows":  # Windows
-                # `netstat` でポートのプロセス情報を取得
-                search_command = f'netstat -ano | findstr :{port}'
-                result = run_command(search_command)
-
-                if result:
-                    lines = result.split("\n")
-                    for line in lines:
-                        parts = line.split()
-                        if len(parts) < 5:
-                            continue
-
-                        pid = parts[-1]
-                        command_info = run_command(f'tasklist /FI "PID eq {pid}" /FO CSV')
-
-                        app_name = "other"
-                        if 'streamlit' in command_info.lower():
-                            for app, info in APPS.items():
-                                if info["path"].lower() in command_info.lower():
-                                    app_name = app
-                                    break
-
-                        data.append({
-                            "Port": port,
-                            "APP_NAME": app_name,
-                            "COMMAND": command_info,
-                            "PID": pid,
-                            "TYPE": parts[1],
-                            "NODE": parts[2],
-                            "NAME": parts[0],
-                        })
-
+            # port情報を調べるコマンドを取得
+            search_command: str = get_port_search_command(port=port)
+            # port情報を調べる
+            search_output: str = run_command(search_command)
+            # 調べた情報をdfに整形する
+            port_search_result: pd.DataFrame = shape_to_dataframe(search_output)
+            # portあたりの重複した情報を取り除く
+            slim_result: pd.DataFrame = summarize_unique_values(port_search_result)
+            # portのprocess idを辿って、起動しているアプリケーションを調べる
+            port_result: pd.DataFrame = add_extracted_app_name(slim_result)
+            # ポート情報を追加
+            port_result["Port"] = str(port)
+            ports_data.append(port_result)
         except Exception as e:
             print(f"エラー発生: {e}")
 
-    if data:
-        df = pd.DataFrame(data)
-
-        # Portごとにデータを集約
-        df = df.groupby("Port").agg({
-            "APP_NAME": lambda x: ", ".join(set(x)),
-            "COMMAND": lambda x: ", ".join(set(x)),
-            "PID": lambda x: ", ".join(set(x)),
-            "TYPE": lambda x: ", ".join(set(x)),
-            "NODE": lambda x: ", ".join(set(x)),
-            "NAME": lambda x: ", ".join(set(x)),
-        }).reset_index()
-
-        df.set_index("Port", inplace=True)  # Port をインデックスに設定
-        return df
+    if ports_data:
+        # 全てのportの調査結果を1つのdfにまとめる
+        integrated_ports_result = pd.concat(ports_data, ignore_index=True)
+        # Port をインデックスに設定
+        integrated_ports_result.set_index("Port", inplace=True)
+        # 重要な部分だけ切り出す
+        # 現在は Port, APP_NAME, PID のみを抽出
+        return integrated_ports_result[["APP_NAME", "PID"]]
     else:
-        return pd.DataFrame(columns=["APP_NAME", "COMMAND", "PID", "TYPE", "NODE", "NAME"]).set_index("Port")
+        return None
 
-def start_app(app_name, port):
-    """アプリを指定ポートで起動"""
-    if app_name not in APPS:
-        return f"アプリ {app_name} は存在しません。"
 
-    app_info = APPS[app_name]
+def try_starting_app(app_name, port):
+    """アプリを指定ポートで起動し、成功したかを判定"""
+    app_info = APPS.get(app_name)
+    if not app_info:
+        print(f"エラー: アプリ {app_name} は存在しません。")
+        return False
     app_file = app_info["path"]
-    app_dir = app_info["dir"]
-
+    app_dir = app_info["dir"] # ここを起点に起動コマンドをうつことで、rootをこれにする
+    # Streamlitの起動コマンドはpythonライブラリのコマンドなのでOSに依存しない
     cmd = f"streamlit run {app_file} --server.port {port}"
-    subprocess.Popen(cmd, shell=True, cwd=app_dir, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    return f"{app_name} をポート {port} で起動しました。"
+    # 起動を試みる
+    try:
+        process = subprocess.Popen(cmd, shell=True,
+                                   cwd=app_dir, # これがroot
+                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        time.sleep(1) # シェルコマンドの実行は非同期らしいので、起動コマンドの出力が出るのを一応待つ
+
+        # エラーメッセージ・エラーを確認
+        stderr_output = process.stderr.read().strip()
+        if stderr_output:
+            return False
+        if process.poll() != 0:  # プロセスが終了していたらエラー
+            print(f"エラー: アプリ {app_name} の起動に失敗しました。")
+            print(f"エラーメッセージ: {stderr_output}")
+            return False
+        # ここまで来たらOK
+        return True  # 起動成功
+    except Exception as e:
+        print(f"エラー: {e}")
+        return False
+
 
 def stop_app(port):
     """指定ポートのアプリを停止"""
