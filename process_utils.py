@@ -1,20 +1,9 @@
+import streamlit as st
 import pandas as pd
-from config import APPS
-from os_utils import get_process_details
 
-def shape_to_dataframe(search_output: str) -> pd.DataFrame:
-    # ヘッダー: 1次元のリスト
-    header = search_output.split("\n")[0].split()
-    # 要素: 2次元のリスト
-    lines = list(map(
-        lambda line: line.split(maxsplit=len(header)-1),
-        search_output.split("\n")[1:]
-    ))
-    # dfにして返す
-    return pd.DataFrame(
-        lines,
-        columns=header
-    )
+from log_util import logger
+from config import OS, APPS
+from os_utils import get_process_details
 
 # ユニークな要素をカンマ区切りでまとめる関数
 def summarize_unique_values(df) -> pd.DataFrame:
@@ -29,28 +18,35 @@ def extract_app_name(process_output: str) -> str:
     """
     プロセスの詳細情報からアプリ名を抽出
     """
+    logger.debug('Process_output: ' + process_output)
+    
     # Google Chrome
-    if "Google Chrome" in process_output:
-        return "Google Chrome"
+    if "Chrome" in process_output:
+        return "Chrome"
     # Safari
     if "Safari" in process_output:
         return "Safari"
+    # MS Edge
+    if "Edge" in process_output:
+        return "Edge"
     # Streamlit アプリ
-    if "streamlit run" in process_output:
+    if any(substring in process_output for substring in ["streamlit run", 'streamlit.exe" run']):
         for app, info in APPS.items():
             if info["path"] in process_output:
                 return app
         return "Streamlit App"  # どのアプリにも一致しない場合
+    if "python" in process_output:
+        return "python"
 
     return "Unknown"
 
 def add_extracted_app_name(df):
     """DataFrame にアプリ名情報を追加"""
-    if "PID" not in df.columns:
+    if ("PID" not in df.columns) or (df["PID"].empty):
         return df  # PID カラムがない場合はそのまま返す
 
     pids = df["PID"].iloc[0].split(", ")  # PID をリスト化
     app_names = [extract_app_name(get_process_details(pid.strip())) for pid in pids if pid.strip().isdigit()]
 
-    df["APP_NAME"] = ", ".join(set(app_names)) if app_names else "Unknown"
+    df["APP_NAME"] = ", ".join(set(app_names)) if app_names else None
     return df
