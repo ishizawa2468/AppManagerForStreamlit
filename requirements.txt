@@ -3,6 +3,6 @@ scipy
 pandas
 streamlit
 jupyter
-jupyter-lab
+jupyterlab
 tqdm
 h5py
