@@ -6,7 +6,7 @@ LOG_FORMAT = "%(asctime)s [%(levelname)s] %(filename)s: %(message)s"
 
 # ログの設定
 logging.basicConfig(
-    level=logging.DEBUG,  # set the lower limit of output logs
+    level=logging.INFO,  # 開発・デバッグするときはlogging.DEBUGにする
     format=LOG_FORMAT,
     handlers=[
         logging.StreamHandler(),  # 標準出力（コンソール）
