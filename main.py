@@ -50,7 +50,7 @@ if st.button("サーバー起動"):
     logger.debug(f'selected_app: {app_of_selected_port}')
 
     # 起動を試みる。すでに起動済みのポートでは起動しない
-    if app_of_selected_port is None:
+    if (app_of_selected_port is None) or (app_of_selected_port is np.nan):
         is_launched, output_lines = try_starting_app(app_choice, port)
         if is_launched:
             logger.debug('App is launched')
