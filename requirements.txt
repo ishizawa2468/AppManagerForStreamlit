@@ -1,0 +1,8 @@
+numpy
+scipy
+pandas
+streamlit
+jupyter
+jupyter-lab
+tqdm
+h5py
