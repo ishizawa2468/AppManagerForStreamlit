@@ -5,5 +5,5 @@
 
 ## ファイル構成
 
-[! メソッド依存図](docs/method_dependency.svg)
+[! メソッド依存図](https://github.com/ishizawa2468/AppManagerForStreamlit/blob/main/docs/method_dependency.svg)
 
