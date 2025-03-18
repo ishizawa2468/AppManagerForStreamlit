@@ -1,8 +1,10 @@
 numpy
 scipy
 pandas
-streamlit
+matplotlib
 jupyter
 jupyterlab
 tqdm
 h5py
+streamlit
+streamlit_antd_components
