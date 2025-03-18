@@ -124,7 +124,7 @@ def stop_app(port):
 
             # すべての PID を `taskkill` で停止
             for pid in pids_list:
-                run_command(f"taskkill /PID {pid}")
+                run_command(f"taskkill /F /PID {pid}")
 
             return True, f"ポート {port} のアプリを停止しました。（PID: {', '.join(pids_list)}）"
 
