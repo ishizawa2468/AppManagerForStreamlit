@@ -1,115 +1,115 @@
 <mxfile host="65bd71144e">
     <diagram id="yCGmcZIXmbpTHskQhGEm" name="Page-1">
-        <mxGraphModel dx="853" dy="890" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" background="#ffffff" math="0" shadow="0">
+        <mxGraphModel dx="904" dy="1094" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" background="#ffffff" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="main.py" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="2" value="main.py" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="310" y="10" width="220" height="640" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="2">
+                <mxCell id="5" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="2" vertex="1">
                     <mxGeometry x="95" y="130" width="30" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="開放しているPortの&lt;div&gt;稼働状況を知りたい&lt;/div&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;size=10;position=0.75;base=20;position2=0.67;" vertex="1" parent="2">
+                <mxCell id="6" value="開放しているPortの&lt;div&gt;稼働状況を知りたい&lt;/div&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;size=10;position=0.75;base=20;position2=0.67;" parent="2" vertex="1">
                     <mxGeometry x="50" y="50" width="120" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="19" value="〜番ポートで&lt;div&gt;〜アプリを起動したい&lt;/div&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;size=10;position=0.75;base=20;position2=0.67;" vertex="1" parent="2">
+                <mxCell id="19" value="〜番ポートで&lt;div&gt;〜アプリを起動したい&lt;/div&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;size=10;position=0.75;base=20;position2=0.67;" parent="2" vertex="1">
                     <mxGeometry x="45" y="250" width="130" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="18" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="2">
+                <mxCell id="18" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="2" vertex="1">
                     <mxGeometry x="95" y="330" width="30" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="34" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="2">
+                <mxCell id="34" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="2" vertex="1">
                     <mxGeometry x="95" y="550" width="30" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="33" value="〜番ポートのアプリを&lt;div&gt;停止したい&lt;/div&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;size=10;position=0.75;base=20;position2=0.67;" vertex="1" parent="2">
+                <mxCell id="33" value="〜番ポートのアプリを&lt;div&gt;停止したい&lt;/div&gt;" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;size=10;position=0.75;base=20;position2=0.67;" parent="2" vertex="1">
                     <mxGeometry x="45" y="470" width="130" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="41" value="" style="endArrow=none;html=1;" edge="1" parent="2">
+                <mxCell id="41" value="" style="endArrow=none;html=1;" parent="2" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint y="440" as="sourcePoint"/>
                         <mxPoint x="220" y="440" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="3" value="process_manager.py" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="1">
+                <mxCell id="3" value="process_manager.py" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
                     <mxGeometry x="570" y="10" width="320" height="640" as="geometry"/>
                 </mxCell>
-                <mxCell id="13" value="search_ports()" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="13" value="search_ports()" style="swimlane;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="60" y="50" width="200" height="160" as="geometry"/>
                 </mxCell>
-                <mxCell id="15" value="config.pyに設定された&lt;div&gt;ポートの稼働状況を&lt;/div&gt;&lt;div&gt;一通り調べ、&lt;/div&gt;&lt;div&gt;ポートごとに集約した&lt;/div&gt;&lt;div&gt;データを返す&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="13">
+                <mxCell id="15" value="config.pyに設定された&lt;div&gt;ポートの稼働状況を&lt;/div&gt;&lt;div&gt;一通り調べ、&lt;/div&gt;&lt;div&gt;ポートごとに集約した&lt;/div&gt;&lt;div&gt;データを返す&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="13" vertex="1">
                     <mxGeometry x="30" y="35" width="140" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="35" value="try_starting_app(アプリ名, ポート番号)" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="35" value="try_starting_app(アプリ名, ポート番号)" style="swimlane;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="40" y="250" width="240" height="160" as="geometry"/>
                 </mxCell>
-                <mxCell id="36" value="指定されたポートで&lt;div&gt;アプリを起動する&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="35">
+                <mxCell id="36" value="指定されたポートで&lt;div&gt;アプリを起動する&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="35" vertex="1">
                     <mxGeometry x="55" y="60" width="130" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="45" value="stop_app(ポート番号)" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="45" value="stop_app(ポート番号)" style="swimlane;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="40" y="460" width="240" height="160" as="geometry"/>
                 </mxCell>
-                <mxCell id="46" value="&lt;div&gt;指定されたポート番号で&lt;/div&gt;&lt;div&gt;起動しているプロセスを一通りkillする&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;※このメソッドだけ&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;リファクタが終わってない&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="45">
+                <mxCell id="46" value="&lt;div&gt;指定されたポート番号で&lt;/div&gt;&lt;div&gt;起動しているプロセスを一通りkillする&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;※このメソッドだけ&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;リファクタが終わってない&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="45" vertex="1">
                     <mxGeometry x="5" y="35" width="230" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="25" value="os_utils.py" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="1">
+                <mxCell id="25" value="os_utils.py" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
                     <mxGeometry x="930" y="150" width="320" height="190" as="geometry"/>
                 </mxCell>
-                <mxCell id="38" value="OSごとのポートを調べるコシェルマンドを取得する" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="25">
+                <mxCell id="38" value="OSごとのポートを調べるコシェルマンドを取得する" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="25" vertex="1">
                     <mxGeometry x="20" y="100" width="300" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="26" value="config.py" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="26" value="config.py" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="660" y="720" width="170" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="27" value="OSの判別" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="26">
+                <mxCell id="27" value="OSの判別" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="26" vertex="1">
                     <mxGeometry y="30" width="170" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" value="他アプリへのPath, フォルダ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="26">
+                <mxCell id="28" value="他アプリへのPath, フォルダ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="26" vertex="1">
                     <mxGeometry y="60" width="170" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;想定利用ポート番号の範囲&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="26">
+                <mxCell id="29" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;想定利用ポート番号の範囲&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="26" vertex="1">
                     <mxGeometry y="90" width="170" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="30" value="process_utils.py" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="1">
+                <mxCell id="30" value="process_utils.py" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
                     <mxGeometry x="930" y="10" width="320" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="31" value="長くなった処理をメソッドに切り分けてある" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="30">
+                <mxCell id="31" value="長くなった処理をメソッドに切り分けてある" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="30" vertex="1">
                     <mxGeometry x="30" y="40" width="260" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="32" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" edge="1" parent="1" source="30" target="13">
+                <mxCell id="32" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" parent="1" source="30" target="13" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="1020" y="80" as="sourcePoint"/>
                         <mxPoint x="900" y="80.41" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="17" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" edge="1" parent="1" source="13">
+                <mxCell id="17" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" parent="1" source="13" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="620" y="162" as="sourcePoint"/>
                         <mxPoint x="470" y="160" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="39" value="OSごとにシェルでコマンドを走らせる" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="39" value="OSごとにシェルでコマンドを走らせる" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="975" y="198" width="230" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="40" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                <mxCell id="40" value="" style="endArrow=none;html=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="310" y="230" as="sourcePoint"/>
                         <mxPoint x="530" y="230" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="42" value="" style="endArrow=classic;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" edge="1" parent="1" source="26" target="2">
+                <mxCell id="42" value="" style="endArrow=classic;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" parent="1" source="26" target="2" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="760" y="710" as="sourcePoint"/>
                         <mxPoint x="810" y="660" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="43" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" edge="1" parent="1" source="26" target="3">
+                <mxCell id="43" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" parent="1" source="26" target="3" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="780" y="480" as="sourcePoint"/>
                         <mxPoint x="830" y="430" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="44" value="" style="endArrow=classic;startArrow=classic;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" edge="1" parent="1" source="26" target="25">
+                <mxCell id="44" value="" style="endArrow=classic;startArrow=none;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;startFill=0;" parent="1" source="26" target="25" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="780" y="480" as="sourcePoint"/>
                         <mxPoint x="830" y="430" as="targetPoint"/>
@@ -118,25 +118,25 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="47" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" edge="1" parent="1" source="25" target="35">
+                <mxCell id="47" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" parent="1" source="25" target="35" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="940" y="60" as="sourcePoint"/>
                         <mxPoint x="840" y="110" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="48" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" edge="1" parent="1" source="35">
+                <mxCell id="48" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" parent="1" source="35" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="600" y="360" as="sourcePoint"/>
                         <mxPoint x="470" y="370" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="49" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" edge="1" parent="1" source="45">
+                <mxCell id="49" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" parent="1" source="45" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="650" y="160" as="sourcePoint"/>
                         <mxPoint x="460" y="590" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="50" value="" style="endArrow=classic;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" edge="1" parent="1">
+                <mxCell id="50" value="" style="endArrow=classic;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="630" y="140" as="sourcePoint"/>
                         <mxPoint x="550" y="350" as="targetPoint"/>
