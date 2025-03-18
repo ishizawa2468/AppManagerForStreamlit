@@ -7,7 +7,7 @@ Streamlitアプリの起動・確認・終了を管理するアプリです。
 
 # デモ
 
-<video src="docs/demo.mp4" controls></video>
+![デモ動画](docs/demo.gif)
 
 
 # ファイル構成
