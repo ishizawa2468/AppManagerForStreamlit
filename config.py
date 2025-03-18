@@ -18,9 +18,9 @@ NOTE: jsonの構造 = {
 }
 """
 APPS = {
-    "AppManager": {
-        "path": "main.py",
-        "dir": "."
+    "HDFViewer": {
+        "path": "../HDFViewer/home.py",
+        "dir": "../HDFViewer",
     },
     "PlanckThermoEmulator": {
         "path": "../PlanckThermoEmulator/home.py",
@@ -33,6 +33,10 @@ APPS = {
     "XRDSpotAnalyzer": {
         "path": "../XRDSpotAnalyzer/home.py",
         "dir": "../XRDSpotAnalyzer"
+    },
+    "AppManager": {
+        "path": "main.py",
+        "dir": "."
     },
 }
 

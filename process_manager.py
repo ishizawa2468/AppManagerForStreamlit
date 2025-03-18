@@ -7,7 +7,7 @@ import time
 import pandas as pd
 
 from log_util import logger
-from config import OS, APPS, BASE_PORT, ALL_PORT_RANGE
+from config import OS, APPS, ALL_PORT_RANGE
 from os_utils import run_command, get_port_search_command, shape_to_dataframe
 from process_utils import summarize_unique_values, add_extracted_app_name
 
@@ -100,7 +100,7 @@ def try_starting_app(app_name, port):
 
 def stop_app(port):
     """指定ポートのアプリを停止"""
-    # FIXME: codes depending on OS should be transfered to os_utils
+    # FIXME: OSに依存する部分は os_utils に移管すべき
     try:
         if OS == "Darwin" or OS == "Linux":  # macOS / Linux
             result = run_command(f"lsof -t -i :{port}")
