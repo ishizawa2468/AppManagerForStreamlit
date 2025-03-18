@@ -106,7 +106,7 @@ def stop_app(port):
             result = run_command(f"lsof -t -i :{port}")
             if result:
                 for pid in result.split("\n"):
-                    run_command(f"kill -9 {pid}")
+                    run_command(f"kill -2 {pid}")
                 return True, f"ポート {port} のアプリを停止しました。"
         elif OS == "Windows":
             ports_data = search_ports()
@@ -124,7 +124,7 @@ def stop_app(port):
 
             # すべての PID を `taskkill` で停止
             for pid in pids_list:
-                run_command(f"taskkill /F /PID {pid}")
+                run_command(f"taskkill /PID {pid}")
 
             return True, f"ポート {port} のアプリを停止しました。（PID: {', '.join(pids_list)}）"
 
