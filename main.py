@@ -1,5 +1,5 @@
-import numpy as np
 import streamlit as st
+import numpy as np
 
 from log_util import logger
 from config import SELECTABLE_PORT_RANGE, APPS
@@ -7,7 +7,7 @@ from process_manager import search_ports, try_starting_app, stop_app
 
 st.set_page_config(
     page_title="App Manager",
-    # layout="wide",
+    # layout="wide", # 広く表示したい場合にはコメントアウト
 )
 
 st.title("Streamlit アプリ管理")
