@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 st.title("Streamlit アプリ管理")
-print("\n  -- Main page is loaded -- ") # log用
+print("\n  -- Main page is loaded -- ") # ターミナルログ用
 
 
 # --- 📡 現在の稼働状況を表示するセクション ---
@@ -60,8 +60,7 @@ if st.button("サーバー起動"):
         if is_launched: # 起動できた場合
             logger.debug('App is launched')
             st.success(f"{app_choice} をポート {selected_port} で起動しました。")
-            st.write('### -> Please access the `Network URL` below!')
-            st.write(output_lines)
+            st.write(f'### -> 現在のURLの末尾を `:{selected_port}` に変更したURLにアクセスしてください。')
         else:
             logger.error('Launch is failed')
             st.error(f"起動に失敗しました -- App:{app_choice}, Port: {selected_port}"
@@ -75,6 +74,7 @@ if st.button("サーバー起動"):
 # --- 🛑 アプリを停止するセクション ---
 st.divider()
 st.subheader("アプリの停止")
+st.info('終了したときに `Bad message ~` という警告が出た場合は、気にせずリロードしてください', icon='💡')
 
 if ports_search_result is not None: # ポート検索結果が存在すれば
     stop_port = st.selectbox("停止するポートを選択", ports_search_result.index.unique())

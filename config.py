@@ -18,13 +18,13 @@ NOTE: jsonの構造 = {
 }
 """
 APPS = {
-    "HDFViewer": {
-        "path": "../HDFViewer/home.py",
-        "dir": "../HDFViewer",
-    },
     "PlanckThermoEmulator": {
         "path": "../PlanckThermoEmulator/home.py",
         "dir": "../PlanckThermoEmulator"
+    },
+    "HDFViewer": {
+        "path": "../HDFViewer/home.py",
+        "dir": "../HDFViewer",
     },
     "RadiationSpectraRotator": {
         "path": "../RadiationSpectraRotator/home.py",

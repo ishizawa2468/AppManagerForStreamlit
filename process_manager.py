@@ -69,30 +69,15 @@ def try_starting_app(app_name, port):
             cmd,
             shell=True,
             cwd=app_dir,
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True  # 出力を文字列として取得
+            stdout=None,
+            stderr=None
         )
         
         logger.debug('Subprocess running, capturing output...')
-        # 一定時間待ちつつ、最初の 10 行の出力を取得
-        output_lines = []
-        start_time = time.time()
-        timeout = 5  # 5秒以内に起動することを期待
-        max_lines = 5  # 取得する最大行数
-
-        for _ in range(max_lines):
-            if time.time() - start_time > timeout:
-                logger.error(f"Timeout: {app_name} の起動に時間がかかりすぎています。")
-                process.terminate()
-                return False, [f"Timeout: {app_name} の起動に時間がかかりすぎています。"]
-
-            line = process.stdout.readline().strip()
-            if line:
-                output_lines.append(line)
-                logger.info(f"Streamlit Output: {line}")
 
         # ここまで来たらOK
         logger.info(f"{app_name} がポート {port} で正常に起動しました。")
-        return True, output_lines
+        return True, "OK"
     except Exception as e:
         logger.error(f"エラー: {e}")
         return False, [f"エラー: {e}"]
